@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/all.css">
         <link rel="stylesheet" href="css/Register.css">
-        <script src="/js/html5shiv.js"></script>
 
     </head>
     <body>
@@ -18,18 +17,22 @@
         <section>
             <div id="main-container">
                 <div id="main">
-                    <form action="" id="main-form">
-                        <div id="main-name">
-                            <input type="text" id="first-name">
-                            <input type="text" id="last-name">
-                        </div> <!-- /main-name -->
-                        <input type="text" id="email">
-                        <div id="main-password">
-                            <input type="text" id="password">
-                            <input type="text" id="password-check">
-                        </div> <!-- /main-password -->
-                        <input type="submit" id="submit">
-                        Have an account? <a href="Login.html">Login</a>
+                    <form action="register.php" id="main-form" method="post"> <!-- remember to remove this in your website -->
+                        <span id="first-p">First Name</span>
+                        <span id="last-p">Last Name</span>
+                        <input type="text" id="first-name" placeholder="Enter first name">
+                        <input type="text" id="last-name" placeholder="Enter last name">
+                        <p id="email-p">Email</p>
+                        <input type="text" id="email" placeholder="Enter email">
+                        <span id="password-p">Password</span>
+                        <span id="password-check-p">Password Check</span>
+                        <input type="password" id="password" placeholder="Enter password">
+                        <input type="password" id="password-check" placeholder="Reenter password">
+                        <input type="submit" id="submit" value="Register">
+                        <div id="login">
+                            <span id="login-p">Have an account? </span>
+                            <a href="Login.html" id="login-a">Login</a>
+                        </div>
                     </form> <!-- /main-form -->
                 </div> <!-- /main -->
             </div> <!-- /main-container -->
