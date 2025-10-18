@@ -1,6 +1,5 @@
 var firstName = document.querySelector("#first-name")
 var lastName = document.querySelector("#last-name")
-var fullName = firstName.value.trim() + lastName.value.trim()
 var email = document.querySelector("#email")
 var password = document.querySelector("#password")
 var passwordCheck = document.querySelector("#password-check")
@@ -53,7 +52,28 @@ register.addEventListener("click", function(e){
         alert("Passwords are not the same.")
         return
     }
-    setTimeout(() => {
+
+    var fullName = firstName.value.trim() + " " + lastName.value.trim()
+
+    var formData = new FormData()
+
+    formData.append("name", fullName)
+    formData.append("email", email.value)
+    formData.append("password", password.value)
+
+    fetch("register.php", { // remember to also remove all this when working on your website
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if(data.includes("success")){
+            setTimeout(() => {
         window.location = "Login.html"
-    }, 1000);
+        }, 1000);
+        }
+    })
+    .catch(error =>{
+        alert("Error fetching data: ", error)
+    })
 })
