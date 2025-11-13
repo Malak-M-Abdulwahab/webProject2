@@ -18,7 +18,7 @@ register.addEventListener("click", function(e){
     if(password){
         password.style.borderColor = "rgb(204, 204, 204)"
     }
-    if(!firstName.value || !lastName.value || !email.value || !password.value || !passwordCheck.value){
+    if(!firstName.value || !lastName.value || !email.value || !password.value){
         if(!firstName.value){
            firstName.style.borderColor = "red"
         }
@@ -35,10 +35,18 @@ register.addEventListener("click", function(e){
         return
     }
     var indexAt = email.value.indexOf("@")
-    console.log
     var indexDot = email.value.indexOf(".")
     if(indexAt == -1 || email.value.length == indexAt + 1 || indexDot == -1 || email.value.length == indexDot + 1 || indexDot < indexAt){
         alert("Enter correct email.")
         return
     }
+    const user = {
+        userEmail: email.value,
+        userPassword: password.value
+    };
+    localStorage.setItem("userData", JSON.stringify(user));
+    alert("Registration Successful!")
+    setTimeout(() => {
+        window.location = "Login.html"
+    }, 500);
 })
