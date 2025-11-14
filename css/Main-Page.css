@@ -146,6 +146,11 @@ body{
     outline: 3px pink solid;
 }
 
+#welcome{
+    color: rgb(80, 20, 35);
+    font-size: 17px;
+}
+
 /* ///////////////////////// END HEADER ////////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
 /* /////////////////////////// SEARCH //////////////////////////// */
@@ -263,10 +268,12 @@ body{
     background-color: rgb(237, 113, 155);
     border-radius: 5px;
     cursor: pointer;
+    font-size: 15px;
 }
 
 #items #remove{
     width: 170px;
+    font-size: 15px;
     height: 40px;
     margin-left: 10px;
     border: 2px rgb(194, 57, 102) solid;

@@ -4,6 +4,8 @@ var email = document.querySelector("#email")
 var password = document.querySelector("#password")
 var register = document.querySelector("#submit")
 
+localStorage.setItem("login", 0)
+
 register.addEventListener("click", function(e){
     e.preventDefault()
     if(firstName){
