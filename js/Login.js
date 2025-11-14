@@ -31,6 +31,7 @@ login.addEventListener("click", function(e){
         alert("Username or Password incorrect!")
         return
     }
+    localStorage.setItem("login", 1);
     alert("Login Successful!")
     setTimeout(() => {
         window.location = "Main-Page.html"

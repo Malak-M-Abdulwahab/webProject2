@@ -41,6 +41,7 @@ register.addEventListener("click", function(e){
         return
     }
     const user = {
+        userName: firstName.value,
         userEmail: email.value,
         userPassword: password.value
     };

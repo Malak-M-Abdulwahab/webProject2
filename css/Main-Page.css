@@ -17,16 +17,100 @@ body{
     height: 100px;
     background-color: rgb(255, 240, 246);
     box-shadow: 0px 0px 6px rgba(233, 169, 191, 0.5);
-    position: relative;
+    display: flex;
 }
 
 #header-logo{
     height: 100px;
     margin-left: 15px;
+    justify-self: start;
 }
 
 #log{
     margin-left: 400px;
+    justify-self: end;
+    margin-left: auto;
+}
+
+#log div *{
+    display: inline;
+}
+
+#loggedIn{
+    padding: 27px;
+    display: none;
+}
+
+#loggedIn button{
+    width: 80px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(255, 240, 246);
+    border-color: rgb(194, 57, 102);
+    color: rgb(194, 57, 102);
+    font-size: medium;
+}
+
+.fa-cart-shopping{
+    color: rgb(238, 118, 158);
+    margin-right: 14px;
+    margin-top: 10px;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.fa-cart-shopping:hover{
+    color: rgb(194, 57, 102);
+}
+
+.fa-circle{
+    color: rgb(194, 57, 102);
+    font-size: 20px;
+    position: absolute;
+}
+
+#items p{
+    color: white;
+    margin: 5px;
+    margin-top: -3px;
+    position: absolute;
+}
+
+#items{
+    margin-left: -27px;
+    position: absolute;
+}
+
+#welcome{
+    margin-right: 10px;
+}
+
+#loggedOut{
+    padding: 27px;
+}
+
+#loggedOut button{
+    width: 80px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: medium;
+}
+
+#loggedOut #login{
+    background-color: rgb(255, 240, 246);
+    border-color: rgb(242, 144, 177);
+    margin-right: 5px;
+    color: rgb(242, 144, 177);
+}
+
+#loggedOut #register{
+    background-color: rgb(255, 240, 246);
+    border-color: rgb(194, 57, 102);
+    color: rgb(194, 57, 102);
 }
 
 /* ///////////////////////// END HEADER ////////////////////////// */
