@@ -7,6 +7,7 @@ if(!localStorage.getItem("productsInCart")){
     for(var i = 0; i < 12; i++){
         productsInCart[i] = 0
     }
+    localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
 }else{
     productsInCart = JSON.parse(localStorage.getItem("productsInCart"))
 }
@@ -15,6 +16,7 @@ if(!localStorage.getItem("productsInFavourite")){
     for(var i = 0; i < 12; i++){
         productsInFavourite[i] = 0
     }
+    localStorage.setItem("productsInFavourite", JSON.stringify(productsInFavourite))
 }else{
     productsInFavourite = JSON.parse(localStorage.getItem("productsInFavourite"))
 }
@@ -30,6 +32,9 @@ var welcome = document.querySelector("#welcome")
 var loggedOutHeader = document.querySelector("#loggedOut")
 var loginBtn = document.querySelector("#login")
 var registerBtn = document.querySelector("#register")
+
+var cartMinus = document.querySelectorAll("#cartMinus")
+var cartPlus = document.querySelectorAll("#cartPlus")
 
 if(loggedIn == 1){
     user = JSON.parse(localStorage.getItem("userData"))
@@ -62,6 +67,28 @@ registerBtn.addEventListener("click", function(){
         window.location = "Register.html"
     }, 500);
 })
+
+if(cartMinus){
+    cartMinus.forEach(function(item){
+        item.addEventListener("click", function(){
+            var cartItemId = item.itemContainer.getAttribute("productID")
+            productsInCart[cartItemId]--
+            showInCart()
+            showCartNumber()
+    }, { once: true })
+    })
+}
+
+if(cartPlus){
+    cartPlus.forEach(function(item){
+        item.addEventListener("click", function(){
+            var cartItemId = item.itemContainer.getAttribute("productID")
+            productsInCart[cartItemId]++
+            showInCart()
+            showCartNumber()
+    }, { once: true })
+    })
+}
 
 /* /////////////////////// HEADER BUTTONS //////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
@@ -116,6 +143,7 @@ var shoppingCartDropDown = document.querySelector("#headerCart")
 var viewProducts = document.querySelector("#viewProducts")
 var cartLogo = document.querySelector("#cartLogo")
 var itemNumber = document.querySelector("#itemNumber")
+var headerProducts = document.querySelector("#headerProducts")
 
 var shoppingCartClick = 0
 
@@ -133,7 +161,22 @@ function showCartNumber(){
 showCartNumber()
 
 function showInCart(){
-    
+    headerProducts.innerHTML = ""
+    for(var i = 0; i < 12; i++){
+        if(productsInCart[i]>0){
+            headerProducts.innerHTML+=`<div id="headerProduct">
+                                <div id="firstLine">
+                                    <h3>${products[i].name}</h3>
+                                    <p>${products[i].price}$</p>
+                                </div>
+                                <div id="secondLine" productID="${i}">
+                                    <button id="cartMinus">-</button>
+                                    <p id="numberOfProducts">${i}</p>
+                                    <button id="cartPlus">+</button>
+                                </div>
+                            </div>`
+        }
+    }
 }
 
 shoppingCart.addEventListener("click", function(){
@@ -182,7 +225,7 @@ eachItem.forEach(function(item) {
             }
             // make the remove button visible!!!
             // check if im logged in!!!!!!!!!!!!!
-        })
+        }, { once: true })
         removeItem.addEventListener("click", function(){
             if(loggedIn == 1){
                 productsInCart[itemID]--
@@ -197,21 +240,28 @@ eachItem.forEach(function(item) {
                     window.location = "Login.html"
                 }, 500);
             }
-        })
+        }, { once: true })
         favourite.addEventListener("click", function(){
             if(loggedIn == 1){
                 if(productsInFavourite[itemID] == 1){
-                    favourite.display.color = "black"
+                    favourite.style.color = "black"
                     productsInFavourite[itemID] = 0
+                    localStorage.setItem("productsInFavourite", JSON.stringify(productsInFavourite))
                 }else{
-                    favourite.display.color = "palevioletred"
+                    favourite.style.color = "rgb(194, 57, 102)"
                     productsInFavourite[itemID] = 1
+                    localStorage.setItem("productsInFavourite", JSON.stringify(productsInFavourite))
                 }
             }else{
                 setTimeout(() => {
                     window.location = "Login.html"
                 }, 500);
             }
-        })
+        }, { once: true })
     }, { once: true })
 });
+
+/* ///////////////////////// END ITEM //////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* ////////////////////////// SEARCH ///////////////////////////// */
+

@@ -85,8 +85,9 @@ body{
 #cartLogo p{
     color: white;
     margin: 5px;
-    margin-top: -3px;
+    margin-top: -1px;
     position: absolute;
+    font-size: 14px;
 }
 
 #cartLogo{
@@ -153,6 +154,8 @@ body{
 
 
 #headerCart{
+    width: 200px;
+    height: 40px;
     position: absolute;
     padding-top: 10px;
     background-color: white;
@@ -173,6 +176,50 @@ body{
     cursor: pointer;
     border: 2px rgb(255, 229, 237) solid;
     border-radius: 5px;
+    margin-left: -2px;
+}
+
+#headerCart #headerProducts #headerProduct{
+    height: 130px;
+    width: 100%;
+    background-color: rgb(255, 219, 225);
+    border: 2px rgb(255, 229, 237) solid;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#headerCart #headerProducts #headerProduct div{
+    margin-top: 10px;
+    display: block;
+    padding-left: 20px;
+}
+
+#headerCart #headerProducts #headerProduct h3{
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+#headerCart #headerProducts #headerProduct p{
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+#headerCart #headerProducts #headerProduct button{
+    width: 30px;
+    height: 30px;
+    color: brown;
+    background-color: rgb(255, 229, 237);
+    border: 2px rgb(255, 216, 228) solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#headerCart #headerProducts #headerProduct button:active{
+    background-color: rgb(255, 216, 228);
+    border: 2px rgb(255, 229, 237) solid;
 }
 
 /* ///////////////////////// END HEADER ////////////////////////// */
