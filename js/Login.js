@@ -27,6 +27,10 @@ login.addEventListener("click", function(e){
         return
     }
     const user = JSON.parse(localStorage.getItem("userData"));
+    if(user == null){
+        alert("User doesn't exist!")
+        return
+    }
     if(user.userEmail != email.value || user.userPassword != password.value){
         alert("Username or Password incorrect!")
         return
