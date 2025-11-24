@@ -232,12 +232,162 @@ body{
 /* ///////////////////////// CART ITEMS ////////////////////////// */
 
 #cartItems{
-    display: flex;
-    width: 80%;
+    display: grid;
+    width: 75%;
     margin: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px 70px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .item{
-    display: flex;
-    width: 250px;
+    display: grid;
+    width: 100%;
+    height: 200px;
+    grid-template-columns: 1fr 6fr;
+    grid-gap: 25px;
+    border: 2px rgb(255, 229, 237) solid;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+}
+
+.item:hover{
+    transition: 0.3s;
+    border: 3px palevioletred solid;
+    box-shadow: 0px 5px 10px rgba(232, 148, 177, 0.5);
+    margin-top: -10px;
+}
+
+.item img{
+    margin-top: 10px;
+    width: 130px;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#cartItemRight{
+    padding-top: 15px;
+}
+
+#cartItemRight h3{
+    font-size: 19px;
+    color: rgb(80, 20, 35);
+    margin-bottom: 15px;
+}
+
+#cartItemRight p{
+    color: rgb(80, 20, 35);
+    margin-bottom: 12px;
+}
+
+#cartItemEdit *{
+    display: inline;
+}
+
+#minus, #plus{
+    width: 27px;
+    height: 30px;
+    margin: 0px 3px;
+    color: brown;
+    background-color: rgb(255, 255, 255);
+    border: 2px rgb(255, 216, 228) solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#minus:active, #plus:active{
+    background-color: rgb(255, 240, 246);
+}
+
+#removeItem{
+    height: 35px;
+    width: 160px;
+    padding: 3px;
+    font-size: 15px;
+    border: 2px rgb(194, 57, 102) solid;
+    border-radius: 4px;
+    color: rgb(255, 240, 246);
+    background-color: rgb(194, 57, 102);
+    cursor: pointer;
+    margin-left: 90px;
+}
+
+#remove:active{
+    background-color: rgb(169, 31, 77);
+    border: 2px rgb(194, 57, 102) solid;
+}
+
+/* /////////////////////// END CART ITEMS //////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* //////////////////////// TOTAL PRICE ////////////////////////// */
+
+#totalPriceContainer{
+    text-align: center;
+    font-size: 20px;
+    color: rgb(80, 20, 35);
+}
+
+#totalPrice{
+    margin-bottom: 15px;
+}
+
+#totalPriceContainer div{
+    width: 100vw;
+    height: 1px;
+    background-color: pink;
+}
+
+/* ////////////////////// END TOTAL PRICE //////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* //////////////////////// FAVOURITES /////////////////////////// */
+
+#favouritesHeader{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#favouritesHeader h2{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(80, 20, 35);
+    margin-bottom: 10px;
+}
+
+#favouritesHeader div{
+    margin: auto;
+    width: 190px;
+    height: 2px;
+    background-color: rgb(241, 124, 144);
+}
+
+#favouritesHeader:hover div{
+    transition: 0.3s;
+    width: 240px;
+}
+
+#favouritesItems{
+    width: 75%;
+    height: 430px;
+    margin: auto;
+    overflow-x: scroll;
+    overflow-y: auto;
+}
+
+.favouritesItem{
+    width: 300px;
+    height: 400px;
+    border: 2px rgb(255, 216, 228) solid;
+    border-radius: 5px;
+    background-color: white;
+    display: inline-block;
+    margin: 15px;
+}
+
+.favouritesItem img{
+    width: 300px;
+    height: 280px;
+    object-fit: cover;
 }

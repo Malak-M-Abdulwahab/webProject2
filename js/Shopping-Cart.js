@@ -123,6 +123,7 @@ function showCartNumber(){
 showCartNumber()
 
 function showInCart(){
+    showCartNumber()
     var headerHeight = 50;
     headerProducts.innerHTML = ""
     for(var i = 0; i < 12; i++){
@@ -132,7 +133,7 @@ function showInCart(){
                                     <h3>${products[i].name}</h3>
                                     <p>${products[i].price}$</p>
                                 </div>
-                                <div id="secondLine" productID="${i}">
+                                <div id="secondLine" productID="${i+1}">
                                     <button id="cartMinus">-</button>
                                     <p id="numberOfProducts">${productsInCart[i]}</p>
                                     <button id="cartPlus">+</button>
@@ -151,13 +152,14 @@ function showInCart(){
         cartMinus.forEach(function(item){
             item.addEventListener("click", function(){
                 var cartItemId = item.parentElement.getAttribute("productID")
-                productsInCart[cartItemId]--
-                if(productsInCart[cartItemId] < 0){
-                    productsInCart[cartItemId] = 0
+                productsInCart[cartItemId - 1]--
+                if(productsInCart[cartItemId - 1] < 0){
+                    productsInCart[cartItemId - 1] = 0
                 }
                 localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
                 showInCart()
                 showCartNumber()
+                showItems()
         }, { once: true })
         })
     }
@@ -166,10 +168,11 @@ function showInCart(){
         cartPlus.forEach(function(item){
             item.addEventListener("click", function(){
                 var cartItemId = item.parentElement.getAttribute("productID")
-                productsInCart[cartItemId]++
+                productsInCart[cartItemId - 1]++
                 localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
                 showInCart()
                 showCartNumber()
+                showItems()
         }, { once: true })
         })
     }
@@ -199,3 +202,93 @@ viewProducts.addEventListener("click", function(){
 /* ////////////////////////// END CART /////////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
 /* /////////////////////////// ITEM ////////////////////////////// */
+
+var cartItems = document.querySelector("#cartItems")
+var cartItemsHeight = 0
+var sumPrice = 0
+
+function showItems(){
+    cartItems.innerHTML = ""
+    sumPrice = 0
+    cartItemsHeight = 0
+
+    for(var i = 0; i < 12; i++){
+        if(productsInCart[i] > 0){
+            cartItems.innerHTML += `<div id="cartItem${products[i].id}" class="item" productID="${products[i].id}">
+                            <div id="cartItemLeft">
+                                <img src="${products[i].img}" alt="product ${products[i].id}">
+                            </div>
+                            <div id="cartItemRight">
+                                <h3>${products[i].name}</h3>
+                                <p id="price">price: ${products[i].price}$</p>
+                                <p id="type">type: ${products[i].type}</p>
+                                <div id="cartItemEdit">
+                                    <button id="minus">-</button>
+                                    <p id="numberOfProducts">${productsInCart[i]}</p>
+                                    <button id="plus">+</button>
+                                    <button id="removeItem">Remove from cart</button>
+                                </div>
+                            </div>
+                        </div>`
+            sumPrice += productsInCart[i] * products[i].price
+            cartItemsHeight += 150
+        }
+    }
+
+    
+    cartItems.style.height = cartItemsHeight
+    var items = document.querySelectorAll(".item")
+
+    items.forEach((elem) => {
+        elem.addEventListener("mouseover", function(){
+            var elemId = +(elem.getAttribute("productID"))
+            var add = document.querySelector(`#cartItem${elemId} #plus`)
+            var minus = document.querySelector(`#cartItem${elemId} #minus`)
+            var remove = document.querySelector(`#cartItem${elemId} #removeItem`)
+
+            add.addEventListener("click", function(){
+                sumPrice += products[elemId - 1].price
+                productsInCart[elemId - 1]++
+                localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
+                showItems()
+                showInCart()
+                totalPrice()
+            })
+
+            minus.addEventListener("click", function(){
+                sumPrice -= products[elemId - 1].price
+                productsInCart[elemId - 1]--
+                if(productsInCart[elemId - 1] < 0){
+                    productsInCart[elemId - 1] = 0
+                }
+                localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
+                showItems()
+                showInCart()
+                totalPrice()
+            })
+
+            remove.addEventListener("click", function(){
+                sumPrice -= products[elemId - 1].price * productsInCart[elemId - 1]
+                productsInCart[elemId - 1] = 0
+                localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
+                showItems()
+                showInCart()
+                totalPrice()
+            })
+        }, { once: true })
+    })
+}
+
+showItems()
+
+/* ////////////////////////// END ITEM /////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* //////////////////////// TOTAL PRICE ////////////////////////// */
+
+var h2price = document.querySelector("#totalPrice")
+
+function totalPrice(){
+    h2price.textContent = `Total Price: ${sumPrice}.00$`
+}
+
+totalPrice()

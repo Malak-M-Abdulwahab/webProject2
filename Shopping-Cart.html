@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/all.css">
         <link rel="stylesheet" href="css/Shopping-Cart.css">
-        <script src="/js/html5shiv.js"></script>
 
     </head>
     <body>
@@ -39,48 +38,53 @@
         <section>
             <div id="cartItemsContainer">
                 <div id="cartItems">
-                    <div id="cartItem1" class="item" productID="1">
-                        <div id="cartItemLeft">
-                            <img src="images/products1.jpg" alt="product 1">
-                        </div>
-                        <div id="cartItemRight">
-                            <h3>idk product name</h3>
-                            <p id="price">400$</p>
-                            <p id="type">flowery and gay</p>
-                            <div id="cartItemEdit">
-                                <button id="remove">Remove from cart</button>
-                            </div>
-                        </div>
-                        <div id="itemCart">
-                            <i class="fa-solid fa-heart" id="heart"></i>
-                            <button id="add">Add to cart</button>
-                            <button id="cartMinus">-</button>
-                            <p id="numberOfProducts">4</p>
-                            <button id="cartPlus">+</button>
-                        </div>
-                    </div>
-                    <div id="cartItem1" class="item" productID="1">
-                        <div id="cartItemLeft">
-                            <img src="images/products1.jpg" alt="product 1">
-                        </div>
-                        <div id="cartItemRight">
-                            <h3>idk product name</h3>
-                            <p id="price">400$</p>
-                            <p id="type">flowery and gay</p>
-                            <div id="cartItemEdit">
-                                <button id="remove">Remove from cart</button>
-                            </div>
-                        </div>
-                        <div id="itemCart">
-                            <i class="fa-solid fa-heart" id="heart"></i>
-                            <button id="add">Add to cart</button>
-                            <button id="cartMinus">-</button>
-                            <p id="numberOfProducts">4</p>
-                            <button id="cartPlus">+</button>
-                        </div>
-                    </div>
+                    
                 </div> <!-- /cartItems -->
             </div> <!-- /cartItemsContainer -->
+        </section>
+
+        <section>
+            <div id="totalPriceContainer">
+                <h2 id="totalPrice"></h2>
+                <div></div>
+            </div>
+        </section>
+
+        <section>
+            <div id="favouritesContainer">
+                <div id="favourites">
+                    <div id="favouritesHeader">
+                        <h2>Favourite Items</h2>
+                        <div></div>
+                    </div>
+                    <div id="favouritesItems">
+                        <div id="favouritesItem1" class="favouritesItem" productID="1">
+                            <img src="images/products1.jpg" alt="product ${products[i].id}">
+                            <h3 id="favouritesName">naaammeeeeeeee</h3>
+                            <p id="favouritesType">flowery and smthing</p>
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                        </div>
+                        <div id="favouritesItem1" class="favouritesItem" productID="1">
+                            <img src="images/products1.jpg" alt="product ${products[i].id}">
+                            <h3 id="favouritesName">naaammeeeeeeee</h3>
+                            <p id="favouritesType">flowery and smthing</p>
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                        </div>
+                        <div id="favouritesItem1" class="favouritesItem" productID="1">
+                            <img src="images/products1.jpg" alt="product ${products[i].id}">
+                            <h3 id="favouritesName">naaammeeeeeeee</h3>
+                            <p id="favouritesType">flowery and smthing</p>
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                        </div>
+                        <div id="favouritesItem1" class="favouritesItem" productID="1">
+                            <img src="images/products1.jpg" alt="product ${products[i].id}">
+                            <h3 id="favouritesName">naaammeeeeeeee</h3>
+                            <p id="favouritesType">flowery and smthing</p>
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <script src="js/Shopping-Cart.js"></script>

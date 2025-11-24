@@ -145,7 +145,7 @@ function showInCart(){
                                     <h3>${products[i].name}</h3>
                                     <p>${products[i].price}$</p>
                                 </div>
-                                <div id="secondLine" productID="${i}">
+                                <div id="secondLine" productID="${i+1}">
                                     <button id="cartMinus">-</button>
                                     <p id="numberOfProducts">${productsInCart[i]}</p>
                                     <button id="cartPlus">+</button>
@@ -164,9 +164,9 @@ function showInCart(){
         cartMinus.forEach(function(item){
             item.addEventListener("click", function(){
                 var cartItemId = item.parentElement.getAttribute("productID")
-                productsInCart[cartItemId]--
-                if(productsInCart[cartItemId] < 0){
-                    productsInCart[cartItemId] = 0
+                productsInCart[cartItemId - 1]--
+                if(productsInCart[cartItemId - 1] < 0){
+                    productsInCart[cartItemId - 1] = 0
                 }
                 localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
                 showInCart()
@@ -179,7 +179,7 @@ function showInCart(){
         cartPlus.forEach(function(item){
             item.addEventListener("click", function(){
                 var cartItemId = item.parentElement.getAttribute("productID")
-                productsInCart[cartItemId]++
+                productsInCart[cartItemId - 1]++
                 localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
                 showInCart()
                 showCartNumber()
@@ -220,17 +220,17 @@ eachItem.forEach(function(item) {
     var addItem = document.querySelector(`#item${itemID} #add`)
     var removeItem = document.querySelector(`#item${itemID} #remove`)
     var favourite = document.querySelector(`#item${itemID} #heart`)
-    if(productsInCart[itemID] > 0){
+    if(productsInCart[itemID - 1] > 0){
         addItem.style.display = "none"
         removeItem.style.display = "inline"
     }
-    if(productsInFavourite[itemID] == 1){
+    if(productsInFavourite[itemID - 1] == 1){
         favourite.style.color = "rgb(194, 57, 102)"
     }
     item.addEventListener("mouseover", function(){
         addItem.addEventListener("click", function(){
             if(loggedIn==1){
-                productsInCart[itemID]++
+                productsInCart[itemID - 1]++
                 localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
                 addItem.style.display = "none"
                 removeItem.style.display = "inline"
@@ -242,15 +242,10 @@ eachItem.forEach(function(item) {
                     window.location = "Login.html"
                 }, 500);
             }
-            // make the remove button visible!!!
-            // check if im logged in!!!!!!!!!!!!!
         }, { once: true })
         removeItem.addEventListener("click", function(){
             if(loggedIn == 1){
-                productsInCart[itemID]--
-                if(productsInCart[itemID] < 0){
-                    productsInCart[itemID] = 0
-                }
+                productsInCart[itemID - 1] = 0
                 localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
                 addItem.style.display = "inline"
                 removeItem.style.display = "none"
@@ -265,13 +260,13 @@ eachItem.forEach(function(item) {
         }, { once: true })
         favourite.addEventListener("click", function(){
             if(loggedIn == 1){
-                if(productsInFavourite[itemID] == 1){
+                if(productsInFavourite[itemID - 1] == 1){
                     favourite.style.color = "black"
-                    productsInFavourite[itemID] = 0
+                    productsInFavourite[itemID - 1] = 0
                     localStorage.setItem("productsInFavourite", JSON.stringify(productsInFavourite))
                 }else{
                     favourite.style.color = "rgb(194, 57, 102)"
-                    productsInFavourite[itemID] = 1
+                    productsInFavourite[itemID - 1] = 1
                     localStorage.setItem("productsInFavourite", JSON.stringify(productsInFavourite))
                 }
             }else{
