@@ -292,3 +292,42 @@ function totalPrice(){
 }
 
 totalPrice()
+
+/* /////////////////////// END TOTAL PRICE /////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* ///////////////////////// FAVOURITES ////////////////////////// */
+
+var favouritesScroller = document.querySelector("#favouritesItemsScroller")
+
+
+function showFavourites(){
+    favouritesScroller.innerHTML = ""
+
+    for(var i = 0; i < 12; i++){
+        if(productsInFavourite[i] == 1){
+            favouritesScroller.innerHTML += `<div id="favouritesItem${products[i].id}" class="favouritesItem" productID="${products[i].id}">
+                                    <img src="${products[i].img}" alt="product ${products[i].id}">
+                                    <h3 id="favouritesName">${products[i].name}</h3>
+                                    <p id="favouritesType">${products[i].type}</p>
+                                    <i class="fa-solid fa-heart" id="heart"></i>
+                                </div>`
+        }
+    }
+    
+    var favouritesHearts = document.querySelectorAll(".favouritesItem")
+
+    favouritesHearts.forEach((heartelem) => {
+        heartelem.addEventListener("mouseover", function(){
+            var heartID = +(heartelem.getAttribute("productID"))
+            var heart = document.querySelector(`#favouritesItem${heartID} i`)
+
+            heart.addEventListener("click", function(){
+                productsInFavourite[heartID - 1] = 0
+                localStorage.setItem("productsInFavourite", JSON.stringify(productsInFavourite))
+                showFavourites()
+            }, { once: true })
+        })
+    })
+}
+
+showFavourites()

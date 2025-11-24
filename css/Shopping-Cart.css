@@ -336,7 +336,7 @@ body{
 
 #totalPriceContainer div{
     width: 100vw;
-    height: 1px;
+    height: 2px;
     background-color: pink;
 }
 
@@ -345,8 +345,10 @@ body{
 /* //////////////////////// FAVOURITES /////////////////////////// */
 
 #favouritesHeader{
+    margin: auto;
     margin-top: 40px;
     margin-bottom: 20px;
+    width: 250px;
 }
 
 #favouritesHeader h2{
@@ -372,13 +374,19 @@ body{
     width: 75%;
     height: 430px;
     margin: auto;
+}
+
+#favouritesItemsScroller{
+    height: 470px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
     overflow-x: scroll;
-    overflow-y: auto;
 }
 
 .favouritesItem{
     width: 300px;
-    height: 400px;
+    height: 420px;
     border: 2px rgb(255, 216, 228) solid;
     border-radius: 5px;
     background-color: white;
@@ -390,4 +398,22 @@ body{
     width: 300px;
     height: 280px;
     object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.favouritesItem h3{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.favouritesItem p{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fa-heart{
+    margin-left: 140px;
+    color: rgb(194, 57, 102);
+    cursor: pointer;
+    font-size: 18px;
 }
