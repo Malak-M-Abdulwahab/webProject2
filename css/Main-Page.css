@@ -7,6 +7,8 @@
 
 body{
     background-color: rgb(255, 250, 253);
+    background-image: url("../images/background7.jpg");
+    background-size: 120px;
 }
 
 /* /////////////////////////////////////////////////////////////// */
@@ -84,10 +86,10 @@ body{
 
 #cartLogo p{
     color: white;
-    margin: 5px;
-    margin-top: -1px;
+    margin: 4px;
+    margin-top: 1px;
     position: absolute;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #cartLogo{
@@ -161,7 +163,7 @@ body{
     background-color: white;
     border: 2px rgb(255, 229, 237) solid;
     border-radius: 5px;
-    margin-left: 60px;
+    margin-left: 10px;
     margin-top: -20px;
     visibility: hidden;
 }
@@ -182,7 +184,7 @@ body{
 #headerCart #headerProducts #headerProduct{
     height: 130px;
     width: 100%;
-    background-color: rgb(255, 219, 225);
+    background-color: rgb(254, 232, 241);
     border: 2px rgb(255, 229, 237) solid;
     border-radius: 5px;
     padding: 5px;
@@ -199,19 +201,22 @@ body{
 #headerCart #headerProducts #headerProduct h3{
     margin-right: 20px;
     font-size: 16px;
+    color: rgb(165, 42, 71);
 }
 
 #headerCart #headerProducts #headerProduct p{
     margin-left: 20px;
     margin-right: 20px;
     font-size: 16px;
+    color: rgb(165, 42, 71);
 }
 
 #headerCart #headerProducts #headerProduct button{
     width: 30px;
     height: 30px;
     color: brown;
-    background-color: rgb(255, 229, 237);
+     /* rgb(255, 229, 237)rgb(255, 240, 246); */
+    background-color: rgb(255, 240, 246);
     border: 2px rgb(255, 216, 228) solid;
     border-radius: 5px;
     cursor: pointer;
@@ -256,6 +261,8 @@ body{
     font-size: 15px;
     margin-left: 20px;
     margin-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #searchIn:focus{
@@ -307,6 +314,7 @@ body{
     overflow: hidden;
     text-align: center;
     transition: 0.3s;
+    background-color: rgb(255, 255, 255);
 }
 
 #items > div:hover{

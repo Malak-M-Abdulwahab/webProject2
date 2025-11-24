@@ -33,9 +33,6 @@ var loggedOutHeader = document.querySelector("#loggedOut")
 var loginBtn = document.querySelector("#login")
 var registerBtn = document.querySelector("#register")
 
-var cartMinus = document.querySelectorAll("#cartMinus")
-var cartPlus = document.querySelectorAll("#cartPlus")
-
 if(loggedIn == 1){
     user = JSON.parse(localStorage.getItem("userData"))
     loggedInHeader.style.display = "block"
@@ -67,28 +64,6 @@ registerBtn.addEventListener("click", function(){
         window.location = "Register.html"
     }, 500);
 })
-
-if(cartMinus){
-    cartMinus.forEach(function(item){
-        item.addEventListener("click", function(){
-            var cartItemId = item.itemContainer.getAttribute("productID")
-            productsInCart[cartItemId]--
-            showInCart()
-            showCartNumber()
-    }, { once: true })
-    })
-}
-
-if(cartPlus){
-    cartPlus.forEach(function(item){
-        item.addEventListener("click", function(){
-            var cartItemId = item.itemContainer.getAttribute("productID")
-            productsInCart[cartItemId]++
-            showInCart()
-            showCartNumber()
-    }, { once: true })
-    })
-}
 
 /* /////////////////////// HEADER BUTTONS //////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
@@ -161,6 +136,7 @@ function showCartNumber(){
 showCartNumber()
 
 function showInCart(){
+    var headerHeight = 50;
     headerProducts.innerHTML = ""
     for(var i = 0; i < 12; i++){
         if(productsInCart[i]>0){
@@ -171,21 +147,57 @@ function showInCart(){
                                 </div>
                                 <div id="secondLine" productID="${i}">
                                     <button id="cartMinus">-</button>
-                                    <p id="numberOfProducts">${i}</p>
+                                    <p id="numberOfProducts">${productsInCart[i]}</p>
                                     <button id="cartPlus">+</button>
                                 </div>
                             </div>`
+            headerHeight += 140;
         }
     }
+
+    shoppingCartDropDown.style.height = `${headerHeight}px`
+    
+    var cartMinus = document.querySelectorAll("#cartMinus")
+    var cartPlus = document.querySelectorAll("#cartPlus")
+    
+    if(cartMinus){
+        cartMinus.forEach(function(item){
+            item.addEventListener("click", function(){
+                var cartItemId = item.parentElement.getAttribute("productID")
+                productsInCart[cartItemId]--
+                if(productsInCart[cartItemId] < 0){
+                    productsInCart[cartItemId] = 0
+                }
+                localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
+                showInCart()
+                showCartNumber()
+        }, { once: true })
+        })
+    }
+
+    if(cartPlus){
+        cartPlus.forEach(function(item){
+            item.addEventListener("click", function(){
+                var cartItemId = item.parentElement.getAttribute("productID")
+                productsInCart[cartItemId]++
+                localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
+                showInCart()
+                showCartNumber()
+        }, { once: true })
+        })
+    }
+
 }
 
 shoppingCart.addEventListener("click", function(){
     if(shoppingCartClick){
         shoppingCartDropDown.style.visibility = "hidden"
+        shoppingCartDropDown.style.marginLeft = "10px"
         shoppingCartClick = 0;
     }
     else{
         shoppingCartDropDown.style.visibility = "visible"
+        shoppingCartDropDown.style.marginLeft = "60px"
         shoppingCartClick = 1;
         showInCart()
     }
@@ -204,11 +216,18 @@ viewProducts.addEventListener("click", function(){
 var eachItem = document.querySelectorAll(".item")
 
 eachItem.forEach(function(item) {
+    var itemID = +(item.getAttribute("productID"))
+    var addItem = document.querySelector(`#item${itemID} #add`)
+    var removeItem = document.querySelector(`#item${itemID} #remove`)
+    var favourite = document.querySelector(`#item${itemID} #heart`)
+    if(productsInCart[itemID] > 0){
+        addItem.style.display = "none"
+        removeItem.style.display = "inline"
+    }
+    if(productsInFavourite[itemID] == 1){
+        favourite.style.color = "rgb(194, 57, 102)"
+    }
     item.addEventListener("mouseover", function(){
-        var itemID = +(item.getAttribute("productID"))
-        var addItem = document.querySelector(`#item${itemID} #add`)
-        var removeItem = document.querySelector(`#item${itemID} #remove`)
-        var favourite = document.querySelector(`#item${itemID} #heart`)
         addItem.addEventListener("click", function(){
             if(loggedIn==1){
                 productsInCart[itemID]++
@@ -229,6 +248,9 @@ eachItem.forEach(function(item) {
         removeItem.addEventListener("click", function(){
             if(loggedIn == 1){
                 productsInCart[itemID]--
+                if(productsInCart[itemID] < 0){
+                    productsInCart[itemID] = 0
+                }
                 localStorage.setItem("productsInCart", JSON.stringify(productsInCart))
                 addItem.style.display = "inline"
                 removeItem.style.display = "none"
@@ -265,3 +287,47 @@ eachItem.forEach(function(item) {
 /* /////////////////////////////////////////////////////////////// */
 /* ////////////////////////// SEARCH ///////////////////////////// */
 
+var searchBy = document.querySelector("#searchBy")
+var searchBtn = document.querySelector("#searchBtn")
+var searchIn = document.querySelector("#searchIn")
+
+var itemContainer = document.querySelector("#items")
+
+searchBtn.addEventListener("click", function(){
+    var name = searchIn.value
+    itemContainer.innerHTML = ""
+    if(searchBy.value == "name"){
+        for(var i = 0; i < 12; i++){
+            if(products[i].name.toLowerCase().includes(name.toLowerCase())){
+                itemContainer.innerHTML += `<div id="item${products[i].id}" class="item" productID="${products[i].id}">
+                        <img src="${products[i].img}" alt="product ${products[i].id}">
+                        <h3>${products[i].name}</h3>
+                        <p id="price">${products[i].price}$</p>
+                        <p id="type">${products[i].type}</p>
+                        <div id="itemCart">
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                            <button id="add">Add to cart</button>
+                            <button id="remove">Remove from cart</button>
+                        </div>
+                    </div>`
+            }
+        }
+    }
+    else if(searchBy.value == "type"){
+        for(var i = 0; i < 12; i++){
+            if(products[i].type.toLowerCase().includes(name.toLowerCase())){
+                itemContainer.innerHTML += `<div id="item${products[i].id}" class="item" productID="${products[i].id}">
+                        <img src="${products[i].img}" alt="product ${products[i].id}">
+                        <h3>${products[i].name}</h3>
+                        <p id="price">${products[i].price}$</p>
+                        <p id="type">${products[i].type}</p>
+                        <div id="itemCart">
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                            <button id="add">Add to cart</button>
+                            <button id="remove">Remove from cart</button>
+                        </div>
+                    </div>`
+            }
+        }
+    }
+})

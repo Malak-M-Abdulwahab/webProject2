@@ -9,7 +9,79 @@
     </head>
     <body>
 
-        
+        <header>
+            <div id="header">
+                <img src="images/Angelic_Pretty_Logo.png" alt="header-logo" id="header-logo">
+                <div id="log">
+                    <div id="loggedIn">
+                        <p id="welcome">Hello, </p>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <div id="cartLogo">
+                            <i class="fa-solid fa-circle"></i>
+                            <p id="itemNumber"></p>
+                        </div> <!-- /cartLogo -->
+                        <button id="logout">Logout</button>
+                    </div> <!-- loggedIn -->
+                    <div id="loggedOut">
+                        <button id="login">Login</button>
+                        <button id="register">Register</button>
+                    </div> <!-- /loggedOut -->
+                    <div id="headerCart">
+                        <div id="headerProducts">
+
+                        </div>
+                        <button id="viewProducts">View all products</button>
+                    </div>
+                </div> <!-- /log -->
+            </div> <!-- /header -->
+        </header>
+
+        <section>
+            <div id="cartItemsContainer">
+                <div id="cartItems">
+                    <div id="cartItem1" class="item" productID="1">
+                        <div id="cartItemLeft">
+                            <img src="images/products1.jpg" alt="product 1">
+                        </div>
+                        <div id="cartItemRight">
+                            <h3>idk product name</h3>
+                            <p id="price">400$</p>
+                            <p id="type">flowery and gay</p>
+                            <div id="cartItemEdit">
+                                <button id="remove">Remove from cart</button>
+                            </div>
+                        </div>
+                        <div id="itemCart">
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                            <button id="add">Add to cart</button>
+                            <button id="cartMinus">-</button>
+                            <p id="numberOfProducts">4</p>
+                            <button id="cartPlus">+</button>
+                        </div>
+                    </div>
+                    <div id="cartItem1" class="item" productID="1">
+                        <div id="cartItemLeft">
+                            <img src="images/products1.jpg" alt="product 1">
+                        </div>
+                        <div id="cartItemRight">
+                            <h3>idk product name</h3>
+                            <p id="price">400$</p>
+                            <p id="type">flowery and gay</p>
+                            <div id="cartItemEdit">
+                                <button id="remove">Remove from cart</button>
+                            </div>
+                        </div>
+                        <div id="itemCart">
+                            <i class="fa-solid fa-heart" id="heart"></i>
+                            <button id="add">Add to cart</button>
+                            <button id="cartMinus">-</button>
+                            <p id="numberOfProducts">4</p>
+                            <button id="cartPlus">+</button>
+                        </div>
+                    </div>
+                </div> <!-- /cartItems -->
+            </div> <!-- /cartItemsContainer -->
+        </section>
         
         <script src="js/Shopping-Cart.js"></script>
 

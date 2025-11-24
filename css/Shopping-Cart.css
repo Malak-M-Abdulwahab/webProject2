@@ -2,5 +2,242 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body{
+    background-color: rgb(255, 250, 253);
+    background-image: url("../images/background7.jpg");
+    background-size: 120px;
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////// HEADER //////////////////////////// */
+
+#header{
+    width: 100%;
+    height: 100px;
+    background-color: rgb(255, 240, 246);
+    box-shadow: 0px 0px 6px rgba(233, 169, 191, 0.5);
+    display: flex;
+}
+
+#header-logo{
+    height: 100px;
+    margin-left: 15px;
+    justify-self: start;
+}
+
+#log{
+    margin-left: 400px;
+    justify-self: end;
+    margin-left: auto;
+}
+
+#log div *{
+    display: inline;
+}
+
+#loggedIn{
+    padding: 27px;
+    display: none;
+}
+
+#loggedIn button{
+    width: 80px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(255, 240, 246);
+    border-color: rgb(194, 57, 102);
+    color: rgb(194, 57, 102);
+    font-size: medium;
+}
+
+#loggedIn button:hover{
+    transition: 0.3s;
+    background-color: rgb(194, 57, 102);
+    color: rgb(255, 240, 246);
+}
+
+#loggedIn button:active{
+    transition: 0s;
+    outline: 3px pink solid;
+}
+
+.fa-cart-shopping{
+    color: rgb(238, 118, 158);
+    margin-right: 14px;
+    margin-top: 10px;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.fa-cart-shopping:hover{
+    color: rgb(194, 57, 102);
+}
+
+.fa-circle{
+    color: rgb(194, 57, 102);
+    font-size: 20px;
+    position: absolute;
+}
+
+#cartLogo p{
+    color: white;
+    margin: 4px;
+    margin-top: 1px;
+    position: absolute;
+    font-size: 12px;
+}
+
+#cartLogo{
+    margin-left: -27px;
+    position: absolute;
+}
+
+#welcome{
+    margin-right: 10px;
+}
+
+#loggedOut{
+    padding: 27px;
+}
+
+#loggedOut button{
+    width: 80px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: medium;
+}
+
+#loggedOut #login{
+    background-color: rgb(255, 240, 246);
+    border-color: rgb(242, 144, 177);
+    margin-right: 5px;
+    color: rgb(242, 144, 177);
+}
+
+#loggedOut #login:hover{
+    transition: 0.3s;
+    background-color: rgb(242, 144, 177);
+    color: white;
+}
+
+#loggedOut #login:active{
+    transition: 0s;
+    outline: 3px pink solid;
+}
+
+#loggedOut #register{
+    background-color: rgb(255, 240, 246);
+    border-color: rgb(194, 57, 102);
+    color: rgb(194, 57, 102);
+}
+
+#loggedOut #register:hover{
+    transition: 0.3s;
+    background-color: rgb(194, 57, 102);
+    color: rgb(255, 240, 246);
+}
+
+#loggedOut #register:active{
+    transition: 0s;
+    outline: 3px pink solid;
+}
+
+#welcome{
+    color: rgb(80, 20, 35);
+    font-size: 17px;
+}
+
+
+#headerCart{
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    padding-top: 10px;
+    background-color: white;
+    border: 2px rgb(255, 229, 237) solid;
+    border-radius: 5px;
+    margin-left: 60px;
+    margin-top: -20px;
+    visibility: hidden;
+}
+
+#headerCart #viewProducts{
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    color: brown;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px rgb(255, 229, 237) solid;
+    border-radius: 5px;
+    margin-left: -2px;
+}
+
+#headerCart #headerProducts #headerProduct{
+    height: 130px;
+    width: 100%;
+    background-color: rgb(254, 232, 241);
+    border: 2px rgb(255, 229, 237) solid;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#headerCart #headerProducts #headerProduct div{
+    margin-top: 10px;
+    display: block;
+    padding-left: 20px;
+}
+
+#headerCart #headerProducts #headerProduct h3{
+    margin-right: 20px;
+    font-size: 16px;
+    color: rgb(165, 42, 71);
+}
+
+#headerCart #headerProducts #headerProduct p{
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 16px;
+    color: rgb(165, 42, 71);
+}
+
+#headerCart #headerProducts #headerProduct button{
+    width: 30px;
+    height: 30px;
+    color: brown;
+     /* rgb(255, 229, 237)rgb(255, 240, 246); */
+    background-color: rgb(255, 240, 246);
+    border: 2px rgb(255, 216, 228) solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#headerCart #headerProducts #headerProduct button:active{
+    background-color: rgb(255, 216, 228);
+    border: 2px rgb(255, 229, 237) solid;
+}
+
+/* ///////////////////////// END HEADER ////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* ///////////////////////// CART ITEMS ////////////////////////// */
+
+#cartItems{
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.item{
+    display: flex;
+    width: 250px;
+}
