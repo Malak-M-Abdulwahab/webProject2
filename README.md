@@ -10,8 +10,8 @@ I own none of the photos used in this website and the one before. I am simply us
 
 ## Table of Contents
 
-1. [How I've changed in HTML and CSS](#htmlcss)
-2. [Things I learned in JavaScript](#js)
+1. [How I've changed in HTML and CSS](#html-and-css)
+2. [Things I learned in JavaScript](#javascript)
 3. [Things I learned in coding in general](#coding)
 
 ## HTML and CSS
